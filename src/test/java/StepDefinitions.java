@@ -6,17 +6,21 @@ import static org.junit.Assert.*;
 public class StepDefinitions {
 
     boolean isAuthenticated;
+    boolean isSmartCardInserted;
 
     @Given("the user inserts a SmartCard")
     public void the_user_inserts_a_SmartCard() {
         // Code to insert SmartCard
+        isSmartCardInserted = true;
     }
 
     @When("the system verifies the SmartCard")
     public void the_system_verifies_the_SmartCard() {
         // Code to verify SmartCard
         // For simplicity, let's assume it always authenticates successfully in this example
-        isAuthenticated = true;
+        if(isSmartCardInserted) {
+            isAuthenticated = true;
+        }
     }
 
     @Then("the user is authenticated")
